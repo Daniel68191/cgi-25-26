@@ -1,8 +1,8 @@
 # Computação Gráfica e Interfaces
 
-## Aulas Práticas
+## Aulas Práticas/Lectures
 
--  [Aula prática 1](./doc/labs/lab01.md)
+-  [Aula prática 1](/doc/labs/lab01-pt.md)/[Lab session 1](/doc/labs/lab01-en.md)
 <!--
 -  [Aula prática 2](./doc/labs/lab02.md)
 -  [Aula prática 3](./doc/labs/lab03.md)
