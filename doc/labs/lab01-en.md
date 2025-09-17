@@ -348,13 +348,13 @@ void main() {
 
 The output variable of the fragment shader can have an arbitrary name, decided by the programmer, and represents the final color to be assigned to the pixel.
 
-## Change the color of the triangle (ex03)
+## ex03 - Change the color of the triangle
 
 Change the fill color of the triangle to green, for example, and the background color to yellow. Don't forget to make a copy of the [ex01](/src/labs/ex01/) folder to a new folder named my-ex03, so as not to interfere with the repository folders.
 
 Hint: the solution is not in app.js...
 
-## Drawing a square (ex04)
+## ex04 - Drawing a square
 
 Copy the contents of the [ex01](/src/labs/ex01/) folder again to a new folder named my-ex04. 
 
@@ -362,12 +362,16 @@ Change the application so that it draws a square. Since WebGL does not have quad
 
 Finally, when your program is running, try changing the dimensions of the browser window and see what happens to the square. Try to find an explanation.
 
+## ex05 - Filling the interior and drawing the boundary
+
 Copy the contents of the ex01 folder again to a new folder called my-ex05.
 
 Change the application so that, in addition to painting the inside of the triangle, it also draws its border in another color.
 
 Hint: You will need to use two different fragment shaders to achieve the effect of two distinct colors. This means you will have to create two GLSL programs. Try to share the vertex shader between the two programs.
 
-## Copy the contents of the ex01 folder to a new folder called my-ex06.
+## ex-06 Drawing thousands of triangles
+
+Copy the contents of the ex01 folder to a new folder called my-ex06.
 
 Draw 10,000 small triangles, arranged randomly on the canvas, using only one call to the [drawArrays()](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/drawArrays) function.

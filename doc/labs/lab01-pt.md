@@ -349,13 +349,13 @@ void main() {
 
 A variável de saída do fragment shader pode ter um nome arbitrário, decidido pelo programador, e representa a cor final a atribuir ao pixel.
 
-## Mudar a cor do triângulo (ex03)
+## ex03 - Mudar a cor do triângulo
 
 Mude a cor do preenchimento do triângulo para verde, por exemplo e a cor do fundo para amarelo. Não se esqueça de fazer uma cópia da pasta [ex01](/src/labs/ex01/) para uma nova pasta de nome my-ex03, de modo a não interferir com as pastas do repositório.
 
 Dica: a solução não está em app.js...
 
-## Desenhar um quadrado (ex04)
+## ex04 - Desenhar um quadrado
 
 Volte a copiar o conteúdo da pasta [ex01](/src/labs/ex01/) para uma nova pasta my-ex04. 
 
@@ -363,12 +363,16 @@ Altere a aplicação para que esta desenhe um quadrado. Como em WebGL não há p
 
 No final, quando o seu programa estiver a funcionar, experimente mudar as dimensões da janela do browser e repare no que acontece ao quadrado. Tente encontrar uma explicação.
 
-## Volte a copiar o conteúdo da pasta ex01 para uma nova pasta my-ex05.
+## ex05 - Pintar o interior e o rebordo do triângulo
+
+Volte a copiar o conteúdo da pasta ex01 para uma nova pasta my-ex05.
 
 Altere a aplicação para que esta, para além de pintar o interior do triângulo, também desenhe o seu rebordo com outra cor.
 
 Dica: Vai ter que usar dois fragment shaders diferentes para conseguir o efeito de duas cores distintas. Isto implica ter que criar dois programas GLSL. Tente partilhar o vertex shader entre os dois programas.
 
-## Copie o conteúdo da pasta ex01 para uma nova pasta my-ex06.
+## ex06 - Desenhar milhares de triângulos
+
+Copie o conteúdo da pasta ex01 para uma nova pasta my-ex06.
 
 Desenhe 10.000 pequenos triângulos, dispostos aleatoriamente no canvas, usando apenas uma chamada da função [drawArrays()](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/drawArrays).
