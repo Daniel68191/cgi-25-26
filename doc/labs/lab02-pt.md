@@ -23,7 +23,7 @@ Não se esqueça que o shader deverá dar bom uso a esse valor que agora recebe.
 As alterações no código da aplicação ([app.js](/src/labs/my-ex07)) passam por:
 
 - Obter a localização da variável uniform usando a função [getUniformLocation()](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getUniformLocation)
-- Adaptar a função ```animate()``` para pintar o interior do triângulo e desenhar a sua fronteira, usando duas chamadas distintas da função [drawArrays()](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/drawArrays) ou [drawElements()](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/drawElements)
+- Adaptar a função ```animate()``` para pintar o interior do triângulo e desenhar a sua fronteira, usando duas chamadas distintas da função [drawArrays()](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/drawArrays)
 - Usar a função [uniform4fv()](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/uniform) para enviar para o programa GLSL a cor que o fragment shader irá usar.
 
 ## ex08 - Animar o triângulo
@@ -48,12 +48,12 @@ Agora resta tratar de declarar uma variável no script app.js que vá mudando de
 
 ## Varyings
 
-Para além dos qualificadores in e uniform, existem ainda mais 2:
+Para além dos qualificadores ```in``` e ```uniform```, existem ainda mais 2:
 
 - ```const``` - para declarar, localmente ao shader, uma constante, ali definida
 - ```out``` - para declarar outputs do vertex shader ou do fragment shader.
   
-Na maior parte dos casos, apenas irá existir uma variável declarada com out no fragment shader, a qual irá representar a cor com que o pixel irá ser pintado. Mas a história é completamente diferente no que diz respeito ao vertex shader e às variáveis ali declaradas com ```out```.
+Na maior parte dos casos, apenas irá existir uma variável declarada com ```out``` no fragment shader, a qual irá representar a cor com que o pixel irá ser pintado. Mas a história é completamente diferente no que diz respeito ao vertex shader e às variáveis ali declaradas com ```out```.
 
 Para se tornar evidente a utilidade de variáveis declaradas como out no vertex shader, vamos imaginar que pretendemos pintar um triângulo com uma cor que resulta duma transição gradual, a partir das cores atribuídas a cada um dos seus vértices - quanto mais perto dum vértice estiver um ponto, mais perto da cor desse mesmo vértice esse ponto será pintado:
 
