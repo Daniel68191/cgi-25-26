@@ -57,7 +57,7 @@ Na maior parte dos casos, apenas irá existir uma variável declarada com ```out
 
 Para se tornar evidente a utilidade de variáveis declaradas como out no vertex shader, vamos imaginar que pretendemos pintar um triângulo com uma cor que resulta duma transição gradual, a partir das cores atribuídas a cada um dos seus vértices - quanto mais perto dum vértice estiver um ponto, mais perto da cor desse mesmo vértice esse ponto será pintado:
 
-![Triângulo com gradiente de cor](/doc/labs/assets/shaded%20triangle.jpeg)
+![Triângulo com gradiente de cor](/doc/labs/assets/shaded_triangle.jpeg)
 
 Podemos agora associar a cada vértice do triângulo 2 atributos: posição (```a_position```) e cor (```a_color```). O vertex shader afectará a variável de saída ```gl_Position``` com uma expressão que dependa do valor do atributo posição. Em relação ao atributo cor, para que ele possa vir a ser interpolado durante a discretização do triângulo, teremos que declarar uma saída adicional do nosso vertex shader, usando o modificador ```out```. Essa saída corresponderá a uma variável de tipo ```vec4```, para guardar as componentes R, G, B e Alpha (opacidade). Iremos seguir a convenção de nos referirmos a essas variáveis como *varyings*, usando o prefixo ```v_ ``` para as nomear. Neste caso seria declarada assim no vertex shader:
 

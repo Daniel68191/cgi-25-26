@@ -57,7 +57,7 @@ In most cases, there will only be one variable declared with ```out``` in the fr
 
 To make the usefulness of variables declared as out in the vertex shader clear, let's imagine that we want to paint a triangle with a color that results from a gradual transition from the colors assigned to each of its vertices—the closer a point is to a vertex, the closer to the color of that vertex that point will be painted:
 
-![Triangle with color gradient](/doc/labs/assets/shaded%20triangle.jpeg)
+![Triangle with color gradient](/doc/labs/assets/shaded_triangle.jpeg)
 
 We can now associate two attributes with each vertex of the triangle: position (```a_position```), and color (```a_color```). The vertex shader will affect the output variable ```gl_Position``` with an expression that depends on the value of the position attribute. Regarding the color attribute, in order for it to be interpolated during the discretization of the triangle, we will have to declare an additional output from our vertex shader, using the modifier ```out```. This output will correspond to a variable of type ```vec4```, to store the R, G, B, and Alpha (opacity) components. We will follow the convention of referring to these variables as *varyings*, using the prefix `v_` to name them. In this case, it would be declared as follows in the vertex shader:
 
