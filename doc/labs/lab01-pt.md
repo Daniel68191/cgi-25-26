@@ -49,21 +49,21 @@ Durante o semestre iremos adoptar uma estrutura rígida para as nossas pastas. A
 
 Desta estrutura destaca-se o seguinte:
 
-- Uma pasta [doc](/doc/) onde estarão todos os guiões das aulas práticas e enunciados de projetos.
+- Uma pasta [doc](../../doc/) onde estarão todos os guiões das aulas práticas e enunciados de projetos.
 - Uma pasta [src](/src/) onde ficará todo o código fonte.
 
-Dentro da pasta [src](/src/) a estrutura é a seguinte: 
-- Uma pasta [libs](/src/libs/) onde ficam guardados os ficheiros correspondentes às bibliotecas usadas.
-- Uma pasta [labs](/src/labs/) para guardar as pastas com o código relacionado com os exercícios a resolver em aula prática.
-- Uma pasta por exercício, tal como [ex01](/src/labs/ex01/), dentro da pasta [labs](/src/labs/), por cada exercício proposto. Esta pasta irá ter todos os ficheiros necessários para a resolução do respetivo exercício, excepto as bibliotecas referidas anteriormente. **O conteúdo destas pastas não deverá ser editado pelos alunos**, pois irá sendo atualizado no repositório pela equipa docente (por exemplo para disponibilizar as soluções).
-- Uma pasta com a sua proposta de solução para um dadao exercício, tal como, por exemplo, [my-ex01](/src/labs/my-ex01/) que deverá ser inicializada com uma cópia integral da pasta [ex01](/src/labs/ex01/), caso exista no repositório, para iniciar a resolução do exercício. Será nesta pasta que cada aluno/grupo deverá escrever o seu código.
-- Uma pasta [prjs](/src/prjs/) para guardar as soluções dos projetos para avaliação.
+Dentro da pasta [src](../../src/) a estrutura é a seguinte: 
+- Uma pasta [libs](../../src/libs/) onde ficam guardados os ficheiros correspondentes às bibliotecas usadas.
+- Uma pasta [labs](../../src/labs/) para guardar as pastas com o código relacionado com os exercícios a resolver em aula prática.
+- Uma pasta por exercício, tal como [ex01](../../src/labs/ex01/), dentro da pasta [labs](../../src/labs/), por cada exercício proposto. Esta pasta irá ter todos os ficheiros necessários para a resolução do respetivo exercício, excepto as bibliotecas referidas anteriormente. **O conteúdo destas pastas não deverá ser editado pelos alunos**, pois irá sendo atualizado no repositório pela equipa docente (por exemplo para disponibilizar as soluções).
+- Uma pasta com a sua proposta de solução para um dadao exercício, tal como, por exemplo, [my-ex01](../../src/labs/my-ex01/) que deverá ser inicializada com uma cópia integral da pasta [ex01](../../src/labs/ex01/), caso exista no repositório, para iniciar a resolução do exercício. Será nesta pasta que cada aluno/grupo deverá escrever o seu código.
+- Uma pasta [prjs](../../src/prjs/) para guardar as soluções dos projetos para avaliação.
 
 Para cada exercício iremos ainda seguir a seguinte convenção para arrumarmos os ficheiros respetivos (ver [ex01](/src/labs/ex01/) acima):
 
-- Um ficheiro [index.html](/src/labs/ex01/index.html) com o código HTML correspondente à estrutura da nossa aplicação
-Um ficheiro [app.js](/src/labs/ex01/app.js) com o código principal da aplicação
-- Uma pasta [shaders](/src/labs/ex01/shaders/) para guardar todos os shaders usados pela aplicação (as extensões para estes shaders serão ```.vert``` e ```.frag``` para os vertex e fragment shaders, respectivamente.
+- Um ficheiro [index.html](../../src/labs/ex01/index.html) com o código HTML correspondente à estrutura da nossa aplicação
+Um ficheiro [app.js](../../src/labs/ex01/app.js) com o código principal da aplicação
+- Uma pasta [shaders](../../src/labs/ex01/shaders/) para guardar todos os shaders usados pela aplicação (as extensões para estes shaders serão ```.vert``` e ```.frag``` para os vertex e fragment shaders, respectivamente.
 - Caso existam mais ficheiros javascript necessários, que não os da biblioteca, estes poderão ficar ao mesmo nível do ficheiro principal, ou arrumados dentro duma pasta de nome ```js```.
 
 ## Testar o ambiente
@@ -85,7 +85,7 @@ O resultado será exatamente o mesmo, embora a aplicação seja completamente di
 
 Nesta secção vamos analisar a estrutura da página da nossa aplicação de exemplo. O ficheiro com a estrutura da página tem o nome [index.html](/src/labs/ex01/index.html) e está colocado na raíz da pasta [ex01](/src/labs/ex01/).
 
-O conteúdo desse ficheiro é bastante simples, consistindo numa página que carrega o script ([app.js](/src/labs/ex01/app.js)) com o código principal da nossa aplicação, através da utilização do elemento ```<script>``` bem como um elemento do tipo ```<canvas>```, o qual é usado para criar uma área na página onde poderemos desenhar o nosso triângulo em WebGL. Ei-lo:
+O conteúdo desse ficheiro é bastante simples, consistindo numa página que carrega o script ([app.js](../../src/labs/ex01/app.js)) com o código principal da nossa aplicação, através da utilização do elemento ```<script>``` bem como um elemento do tipo ```<canvas>```, o qual é usado para criar uma área na página onde poderemos desenhar o nosso triângulo em WebGL. Ei-lo:
 
 ```html
 <!DOCTYPE html>
@@ -106,7 +106,7 @@ De notar que o elemento ```<canvas>``` tem as dimensões especificadas usando os
 
 ### Esqueleto
 
-O conteúdo do ficheiro [app.js](/src/labs/ex01/app.js) é bastante mais elaborado. O esqueleto do nosso programa é o seguinte:
+O conteúdo do ficheiro [app.js](../../src/labs/ex01/app.js) é bastante mais elaborado. O esqueleto do nosso programa é o seguinte:
 
 ```js
 // import required libraries and additional scripts
@@ -161,7 +161,7 @@ loadShadersFromURLS(["shader.vert", "shader.frag"])
    .then(shaders => setup(shaders));
 ```
 
-Repare-se que se omitiu o prefixo, e portanto teremos que arrumar os dois shaders dentro duma pasta de nome [shaders](/src/labs/ex01/shaders/). A função ```loadShadersFromURLS()``` retorna de imediato, embora não o resultado que pretendemos (o código fonte dos shaders). A utilização de ```.then(result => ...)``` permite aguardar pelo fim das tarefas assíncronas que são executadas dentro daquela função e usar depois o resultado. Neste caso, o resultado foi denominado de ```shaders``` e usado para se chamar a função ```setup()```.
+Repare-se que se omitiu o prefixo, e portanto teremos que arrumar os dois shaders dentro duma pasta de nome [shaders](../../src/labs/ex01/shaders/). A função ```loadShadersFromURLS()``` retorna de imediato, embora não o resultado que pretendemos (o código fonte dos shaders). A utilização de ```.then(result => ...)``` permite aguardar pelo fim das tarefas assíncronas que são executadas dentro daquela função e usar depois o resultado. Neste caso, o resultado foi denominado de ```shaders``` e usado para se chamar a função ```setup()```.
 
 O resultado da função ```loadShadersFromURLS()``` é um objeto que funciona como um dicionário, traduzindo o nome dum shader (uma string) no seu respetivo código fonte (outra string).
 
@@ -190,9 +190,9 @@ function setup(shaders)
     // ...
 }
 ```
-O processo consiste em pedir ao objeto global document para devolver uma referência para o objecto que possui um determinado identificador - neste caso ```gl-canvas```. De seguida usamos a função ```setupWebGL()```, da biblioteca [utils.js](/src/libs/utils.js) que trata da criação dum contexto WebGL, ficando este associado ao canvas. O contexto WebGL não é mais do que um objeto que nos permite aceder à API do WebGL.
+O processo consiste em pedir ao objeto global document para devolver uma referência para o objecto que possui um determinado identificador - neste caso ```gl-canvas```. De seguida usamos a função ```setupWebGL()```, da biblioteca [utils.js](../../src/libs/utils.js) que trata da criação dum contexto WebGL, ficando este associado ao canvas. O contexto WebGL não é mais do que um objeto que nos permite aceder à API do WebGL.
 
-Neste momento já podemos então chamar funções da API do WebGL e vamos tratar de compilar os shaders para formarmos um programa GLSL que se poderá vir a usar em tarefas de desenho de elementos gráficos (primitivas gráficas) no canvas. Usaremos para a formação do programa GLSL a função ```buildProgramFromSources()```, da biblioteca [utils.js](/src/libs/utils.js):
+Neste momento já podemos então chamar funções da API do WebGL e vamos tratar de compilar os shaders para formarmos um programa GLSL que se poderá vir a usar em tarefas de desenho de elementos gráficos (primitivas gráficas) no canvas. Usaremos para a formação do programa GLSL a função ```buildProgramFromSources()```, da biblioteca [utils.js](../../src/libs/utils.js):
 ```js
     program = buildProgramFromSources(gl, shaders["shader.vert"], shaders["shader.frag"]);
 ```
@@ -202,7 +202,7 @@ A função recebe 3 argumentos:
 - uma string com o código fonte do vertex shader
 - uma string com o código fonte do fragment shader
 
-Note-se que obtemos o código fonte de cada shader usando o dicionário que é passado como argumento da função ```setup()```. Aconselha-se a leitura do código fonte da função ```buildProgramFromSources()``` para se perceberem as chamadas da API que lá são feitas. Falta ainda acrescentar as necessárias declarações para importarmos as funções usadas da biblioteca [utils.js](/src/libs/utils.js):
+Note-se que obtemos o código fonte de cada shader usando o dicionário que é passado como argumento da função ```setup()```. Aconselha-se a leitura do código fonte da função ```buildProgramFromSources()``` para se perceberem as chamadas da API que lá são feitas. Falta ainda acrescentar as necessárias declarações para importarmos as funções usadas da biblioteca [utils.js](../../src/libs/utils.js):
 
 ```js
 import { loadShadersFromURLS, setupWebGL, buildProgramFromSources } from "../../libs/utils.js";
@@ -222,7 +222,7 @@ O nosso objetivo é desenhar apenas um triângulo simples, de cor vermelha. Assi
     const vertices = [ vec2(-0.5, -0.5), vec2(0.5, -0.5), vec2(0, 0.5) ];
 ```
 
-Neste caso trata-se dum array de arrays a duas dimensões. O tipo ```vec2``` está declarado na biblioteca [MV.js](/src/libs/MV.js), mas trataremos da sua importação mais tarde. As seguintes linhas de código criam um buffer, preenchem-no com as coordenadas dos vértices e enviam-no para o GPU:
+Neste caso trata-se dum array de arrays a duas dimensões. O tipo ```vec2``` está declarado na biblioteca [MV.js](../../src/libs/MV.js), mas trataremos da sua importação mais tarde. As seguintes linhas de código criam um buffer, preenchem-no com as coordenadas dos vértices e enviam-no para o GPU:
 
 ```js
 const aBuffer = gl.createBuffer();
@@ -232,7 +232,7 @@ gl.bufferData(gl.ARRAY_BUFFER, flatten(vertices), gl.STATIC_DRAW);
 
 A linha 3, acima é a chamada que preenche efectivamente o buffer, ficando este com a dimensão dos dados que lá são colocados. Repare-se que na criação do buffer, na linha 1, nada é dito relativamente à sua dimensão. A chamada da função [bufferData()](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bufferData) também tem a particularidade de não indicar, nos seus argumentos, que buffer será preenchido. Imagine-se um programa que entretanto tenha criado vários buffers, como será que a API sabe em que buffer deverão ser colocados os dados? 
 
-É precisamente para isso que lá está a linha 2. Nessa linha, o buffer criado na linha 1 fica ativo para operações cujo alvo (target) seja um buffer do tipo (```ARRAY_BUFFER```). Esse mesmo alvo é indicado na linha 3, no primeiro argumento da chamada. O nosso array declarado atrás,  com as coordenadas dos 3 vértices do triângulo não pode ser passado diretamente, pois o 2º argumento da chamada de bufferData() necessitar ser um array do tipo ```Float32Array``` (um array javascript que usa números de vírgula flutuante nativos, em vez do tipo ```Number```, o tipo de dados do javascript para lidar com números). Felizmente a biblioteca [MV.js](/src/libs/MV.js) disponibiliza a função ```flatten()``` que trata de arrumar o nosso array de arrays do tipo ```vec2()``` num array unidimensional com os dados convertidos para o formato nativo. 
+É precisamente para isso que lá está a linha 2. Nessa linha, o buffer criado na linha 1 fica ativo para operações cujo alvo (target) seja um buffer do tipo (```ARRAY_BUFFER```). Esse mesmo alvo é indicado na linha 3, no primeiro argumento da chamada. O nosso array declarado atrás,  com as coordenadas dos 3 vértices do triângulo não pode ser passado diretamente, pois o 2º argumento da chamada de bufferData() necessitar ser um array do tipo ```Float32Array``` (um array javascript que usa números de vírgula flutuante nativos, em vez do tipo ```Number```, o tipo de dados do javascript para lidar com números). Felizmente a biblioteca [MV.js](../../src/libs/MV.js) disponibiliza a função ```flatten()``` que trata de arrumar o nosso array de arrays do tipo ```vec2()``` num array unidimensional com os dados convertidos para o formato nativo. 
 
 O passo seguinte consiste, então, em ensinar o WebGL a interpretar os dados presentes no buffer:
 
@@ -351,13 +351,13 @@ A variável de saída do fragment shader pode ter um nome arbitrário, decidido 
 
 ## ex03 - Mudar a cor do triângulo
 
-Mude a cor do preenchimento do triângulo para verde, por exemplo e a cor do fundo para amarelo. Não se esqueça de fazer uma cópia da pasta [ex01](/src/labs/ex01/) para uma nova pasta de nome my-ex03, de modo a não interferir com as pastas do repositório.
+Mude a cor do preenchimento do triângulo para verde, por exemplo e a cor do fundo para amarelo. Não se esqueça de fazer uma cópia da pasta [ex01](../../src/labs/ex01/) para uma nova pasta de nome my-ex03, de modo a não interferir com as pastas do repositório.
 
 Dica: a solução não está em app.js...
 
 ## ex04 - Desenhar um quadrado
 
-Volte a copiar o conteúdo da pasta [ex01](/src/labs/ex01/) para uma nova pasta my-ex04. 
+Volte a copiar o conteúdo da pasta [ex01](../../src/labs/ex01/) para uma nova pasta my-ex04. 
 
 Altere a aplicação para que esta desenhe um quadrado. Como em WebGL não há primitivas do tipo quadrilátero (ou qualquer polígono que não seja um triângulo), deverá recorrer ao uso de dois triângulos.
 

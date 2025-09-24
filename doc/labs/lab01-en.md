@@ -49,21 +49,21 @@ During the semester, we will adopt a rigid structure for our folders. The adopte
 
 The following stands out in this structure:
 
-- A [doc](/doc/) folder containing all the scripts for practical classes and project statements.
-- A [src](/src/) folder containing all the source code.
+- A [doc](../../doc/) folder containing all the scripts for practical classes and project statements.
+- A [src](../../src/) folder containing all the source code.
 
-Inside the [src](/src/) folder, the structure is as follows: 
-- A [libs](/src/libs/) folder where the files corresponding to the libraries used are stored.
-- A [labs](/src/labs/) folder to store the folders with the code related to the exercises to be solved in practical classes.
-- One folder per exercise, such as [ex01](/src/labs/ex01/), inside the [labs](/src/labs/) folder, for each exercise proposed. This folder will contain all the files necessary to solve the respective exercise, except for the libraries mentioned above. **The contents of these folders should not be edited by students**, as they will be updated in the repository by the teaching team (for example, to make the solutions available).
-- A folder with your proposed solution for a given exercise, such as [my-ex01](/src/labs/my-ex01/), which should be initialised with a full copy of the [ex01](/src/labs/ex01/) folder, if it exists in the repository, to start solving the exercise. Each student/group should write their code in this folder.
-- A folder [prjs](/src/prjs/) to store the project solutions for assessment.
+Inside the [src](../../src/) folder, the structure is as follows: 
+- A [libs](../../src/libs/) folder where the files corresponding to the libraries used are stored.
+- A [labs](../../src/labs/) folder to store the folders with the code related to the exercises to be solved in practical classes.
+- One folder per exercise, such as [ex01](../../src/labs/ex01/), inside the [labs](../../src/labs/) folder, for each exercise proposed. This folder will contain all the files necessary to solve the respective exercise, except for the libraries mentioned above. **The contents of these folders should not be edited by students**, as they will be updated in the repository by the teaching team (for example, to make the solutions available).
+- A folder with your proposed solution for a given exercise, such as [my-ex01](../../src/labs/my-ex01/), which should be initialised with a full copy of the [ex01](../../src/labs/ex01/) folder, if it exists in the repository, to start solving the exercise. Each student/group should write their code in this folder.
+- A folder [prjs](../../src/prjs/) to store the project solutions for assessment.
 
-For each exercise, we will also follow the following convention to organise the respective files (see [ex01](/src/labs/ex01/) above):
+For each exercise, we will also follow the following convention to organise the respective files (see [ex01](../../src/labs/ex01/) above):
 
-- An [index.html](/src/labs/ex01/index.html) file with the HTML code corresponding to the structure of our application
-An [app.js](/src/labs/ex01/app.js) file with the main application code
-- A [shaders](/src/labs/ex01/shaders/) folder to store all the shaders used by the application (the extensions for these shaders will be ```.vert``` and ```.frag``` for vertex and fragment shaders, respectively.
+- An [index.html](../../src/labs/ex01/index.html) file with the HTML code corresponding to the structure of our application
+An [app.js](../../src/labs/ex01/app.js) file with the main application code
+- A [shaders](../../src/labs/ex01/shaders/) folder to store all the shaders used by the application (the extensions for these shaders will be ```.vert``` and ```.frag``` for vertex and fragment shaders, respectively.
 - If there are more JavaScript files needed, other than those in the library, they can be placed at the same level as the main file, or stored in a folder named ```js```
 
 ## Testing the environment
@@ -83,9 +83,9 @@ The result will be exactly the same, although the application is completely diff
 
 ## Application page structure
 
-In this section, we will analyse the structure of our example application page. The file with the page structure is named [index.html](/src/labs/ex01/index.html) and is located in the root of the [ex01](/src/labs/ex01/) folder.
+In this section, we will analyse the structure of our example application page. The file with the page structure is named [index.html](../../src/labs/ex01/index.html) and is located in the root of the [ex01](../../src/labs/ex01/) folder.
 
-The content of this file is quite simple, consisting of a page that loads the script ([app.js](/src/labs/ex01/app.js)) with the main code of our application, using the ```<script>``` element, as well as a ```<canvas>``` element, which is used to create an area on the page where we can draw our triangle in WebGL. Here it is:
+The content of this file is quite simple, consisting of a page that loads the script ([app.js](../../src/labs/ex01/app.js)) with the main code of our application, using the ```<script>``` element, as well as a ```<canvas>``` element, which is used to create an area on the page where we can draw our triangle in WebGL. Here it is:
 
 ```html
 <!DOCTYPE html>
@@ -106,7 +106,7 @@ Note that the ```<canvas>``` element has dimensions specified using the ```width
 
 ### Skeleton
 
-The contents of the [app.js](/src/labs/ex01/app.js) file are much more elaborate. The skeleton of our programme is as follows:
+The contents of the [app.js](../../src/labs/ex01/app.js) file are much more elaborate. The skeleton of our programme is as follows:
 
 ```js
 // import required libraries and additional scripts
@@ -161,7 +161,7 @@ loadShadersFromURLS([‘shader.vert’, ‘shader.frag’])
    .then(shaders => setup(shaders));
 ```
 
-Note that the prefix has been omitted, so we will have to store the two shaders in a folder named [shaders](/src/labs/ex01/shaders/). The function ```loadShadersFromURLS()``` returns immediately, although not with the result we want (the source code of the shaders). The use of ```.then(result => ...)``` allows us to wait for the asynchronous tasks that are executed within that function to finish and then use the result. In this case, the result was named ```shaders``` and used to call the ```setup()``` function.
+Note that the prefix has been omitted, so we will have to store the two shaders in a folder named [shaders](../../src/labs/ex01/shaders/). The function ```loadShadersFromURLS()``` returns immediately, although not with the result we want (the source code of the shaders). The use of ```.then(result => ...)``` allows us to wait for the asynchronous tasks that are executed within that function to finish and then use the result. In this case, the result was named ```shaders``` and used to call the ```setup()``` function.
 
 The result of the ```loadShadersFromURLS()``` function is an object that works like a dictionary, translating the name of a shader (a string) into its respective source code (another string).
 
@@ -190,9 +190,9 @@ function setup(shaders)
     // ...
 }
 ```
-The process consists of asking the global document object to return a reference to the object that has a specific identifier - in this case ```gl-canvas```. Next, we use the ```setupWebGL()``` function from the [utils.js](/src/libs/utils.js) library, which creates a WebGL context and associates it with the canvas. The WebGL context is nothing more than an object that allows us to access the WebGL API.
+The process consists of asking the global document object to return a reference to the object that has a specific identifier - in this case ```gl-canvas```. Next, we use the ```setupWebGL()``` function from the [utils.js](../../src/libs/utils.js) library, which creates a WebGL context and associates it with the canvas. The WebGL context is nothing more than an object that allows us to access the WebGL API.
 
-At this point, we can now call functions from the WebGL API and compile the shaders to form a GLSL programme that can be used in tasks involving the drawing of graphic elements (graphic primitives) on the canvas. To form the GLSL programme, we will use the ```buildProgramFromSources()``` function from the [utils.js](/src/libs/utils.js) library:
+At this point, we can now call functions from the WebGL API and compile the shaders to form a GLSL programme that can be used in tasks involving the drawing of graphic elements (graphic primitives) on the canvas. To form the GLSL programme, we will use the ```buildProgramFromSources()``` function from the [utils.js](../../src/libs/utils.js) library:
 ```js
     program = buildProgramFromSources(gl, shaders[‘shader.vert’], shaders[‘shader.frag’]);
 ```
@@ -202,7 +202,7 @@ The function receives three arguments:
 - a string with the vertex shader source code
 - a string with the fragment shader source code
 
-Note that we obtain the source code for each shader using the dictionary that is passed as an argument to the ```setup()``` function. We recommend reading the source code for the ```buildProgramFromSources()``` function to understand the API calls that are made there. We still need to add the necessary declarations to import the functions used from the [utils.js](/src/libs/utils.js) library:
+Note that we obtain the source code for each shader using the dictionary that is passed as an argument to the ```setup()``` function. We recommend reading the source code for the ```buildProgramFromSources()``` function to understand the API calls that are made there. We still need to add the necessary declarations to import the functions used from the [utils.js](../../src/libs/utils.js) library:
 
 ```js
 import { loadShadersFromURLS, setupWebGL, buildProgramFromSources } from ‘../../libs/utils.js’;
@@ -222,7 +222,7 @@ Our goal is to draw only a simple red triangle. Thus, the only data that varies 
     const vertices = [ vec2(-0.5, -0.5), vec2(0.5, -0.5), vec2(0, 0.5) ];
 ```
 
-In this case, it is a two-dimensional array of arrays. The type ```vec2``` is declared in the [MV.js](/src/libs/MV.js) library, but we will deal with its import later. The following lines of code create a buffer, fill it with the vertex coordinates, and send it to the GPU:
+In this case, it is a two-dimensional array of arrays. The type ```vec2``` is declared in the [MV.js](../../src/libs/MV.js) library, but we will deal with its import later. The following lines of code create a buffer, fill it with the vertex coordinates, and send it to the GPU:
 
 ```js
 const aBuffer = gl.createBuffer();
@@ -232,7 +232,7 @@ gl.bufferData(gl.ARRAY_BUFFER, flatten(vertices), gl.STATIC_DRAW);
 
 Line 3 above is the call that actually fills the buffer, which takes on the size of the data placed there. Note that when creating the buffer in line 1, nothing is said about its size. The call to the [bufferData()](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bufferData) function also has the particularity of not indicating, in its arguments, which buffer will be filled. Imagine a programme that has created several buffers in the meantime. How does the API know which buffer the data should be placed in? 
 
-That is precisely why line 2 is there. In that line, the buffer created in line 1 becomes active for operations whose target is a buffer of type (```ARRAY_BUFFER```). That same target is indicated in line 3, in the first argument of the call. Our array declared above, with the coordinates of the three vertices of the triangle, cannot be passed directly, because the second argument of the bufferData() call needs to be an array of type Float32Array (a JavaScript array that uses native floating-point numbers instead of the Number type, the JavaScript data type for handling numbers). Fortunately, the [MV.js](/src/libs/MV.js) library provides the `flatten()` function, which arranges our array of `vec2()` arrays into a one-dimensional array with the data converted to the native format. 
+That is precisely why line 2 is there. In that line, the buffer created in line 1 becomes active for operations whose target is a buffer of type (```ARRAY_BUFFER```). That same target is indicated in line 3, in the first argument of the call. Our array declared above, with the coordinates of the three vertices of the triangle, cannot be passed directly, because the second argument of the bufferData() call needs to be an array of type Float32Array (a JavaScript array that uses native floating-point numbers instead of the Number type, the JavaScript data type for handling numbers). Fortunately, the [MV.js](../../src/libs/MV.js) library provides the `flatten()` function, which arranges our array of `vec2()` arrays into a one-dimensional array with the data converted to the native format. 
 
 The next step is to teach WebGL to interpret the data in the buffer:
 
@@ -350,13 +350,13 @@ The output variable of the fragment shader can have an arbitrary name, decided b
 
 ## ex03 - Change the color of the triangle
 
-Change the fill color of the triangle to green, for example, and the background color to yellow. Don't forget to make a copy of the [ex01](/src/labs/ex01/) folder to a new folder named my-ex03, so as not to interfere with the repository folders.
+Change the fill color of the triangle to green, for example, and the background color to yellow. Don't forget to make a copy of the [ex01](../../src/labs/ex01/) folder to a new folder named my-ex03, so as not to interfere with the repository folders.
 
 Hint: the solution is not in app.js...
 
 ## ex04 - Drawing a square
 
-Copy the contents of the [ex01](/src/labs/ex01/) folder again to a new folder named my-ex04. 
+Copy the contents of the [ex01](../../src/labs/ex01/) folder again to a new folder named my-ex04. 
 
 Change the application so that it draws a square. Since WebGL does not have quadrilateral primitives (or any polygons other than triangles), you will need to use two triangles.
 
@@ -364,7 +364,7 @@ Finally, when your program is running, try changing the dimensions of the browse
 
 ## ex05 - Filling the interior and drawing the boundary
 
-Copy the contents of the ex01 folder again to a new folder called my-ex05.
+Copy the contents of the [ex01](../../src/labs/ex01) folder again to a new folder called [my-ex05](../../src/labs/my-ex05).
 
 Change the application so that, in addition to painting the inside of the triangle, it also draws its border in another color.
 
@@ -372,6 +372,6 @@ Hint: You will need to use two different fragment shaders to achieve the effect 
 
 ## ex-06 Drawing thousands of triangles
 
-Copy the contents of the ex01 folder to a new folder called my-ex06.
+Copy the contents of the [ex01](../../src/labs/ex01) folder to a new folder called [my-ex06](../../src/labs/my-ex06).
 
 Draw 10,000 small triangles, arranged randomly on the canvas, using only one call to the [drawArrays()](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/drawArrays) function.
