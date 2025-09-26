@@ -12,7 +12,7 @@ function setup(shaders) {
     gl = setupWebGL(canvas);
 
     program1 = buildProgramFromSources(gl, shaders["shader.vert"], shaders["shader_int.frag"]);
-    program2 = buildProgramFromSources(gl, shaders["shader.vert"], shaders["shader_out.frag"]);
+    program2 = buildProgramFromSources(gl, shaders["shader_out.vert"], shaders["shader_out.frag"]);
 
     const vertices = [vec2(-0.5, -0.5), vec2(0.5, -0.5), vec2(0, 0.5)];
 
@@ -48,16 +48,16 @@ function animate() {
 
     gl.bindVertexArray(vao);
 
-    gl.useProgram(program1);
+    gl.useProgram(program2);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
 
-    gl.useProgram(program2);
-    gl.drawArrays(gl.LINE_LOOP, 0, 3);
+    gl.useProgram(program1);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
 
     gl.bindVertexArray(null);
 }
 
 {
-    const allshaders = ["shader.vert", "shader_int.frag", "shader_out.frag"];
+    const allshaders = ["shader.vert", "shader_out.vert", "shader_int.frag", "shader_out.frag"];
     loadShadersFromURLS(allshaders).then(shaders => setup(shaders));
 }
