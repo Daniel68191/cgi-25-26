@@ -1,5 +1,5 @@
 # Project 1 - 2D Parametric Curves
-Draft version 0.91
+Draft version 0.92
 
 [![IMAGE ALT TEXT'](./assets/image-01.png)](https://youtu.be/K_npEJzaMM4)
 
@@ -70,3 +70,67 @@ The curve points should be evaluated inside a vertex shader. The mandatory attri
 The vertex shader should also receive the coefficient values for the selected curve, a number to identify the curve family and the limits for $t_0$ and $t_1$.
 
 The application should preserve shapes and not deform them (a circle should be displayed as a circle).
+
+## Families of curves
+
+### Family 1
+
+$$ \left\{
+    \begin{array}{rcl}
+    x(t) & = & cos(at) + \dfrac{cos(bt)}{2} + \dfrac{sin(ct)}{3} \\
+    \\
+    y(t) & = & sin(at) + \dfrac{sin(bt)}{2} + \dfrac{cos(ct)}{3} \\
+    \end{array}
+    \right.$$
+
+### Family 2
+
+$$ \left\{
+    \begin{array}{rcl}
+    x(t) & = & 2[cos(at) + cos^3(bt)] \\
+    \\
+    y(t) & = & 2[sin(at) + sin^3(bt)] \\
+    \end{array}
+    \right.$$
+
+### Family 3
+
+$$ \left\{
+    \begin{array}{rcl}
+    x(t) & = & cos(at) sin(sin(at)) \\
+    \\
+    y(t) & = & sin(at) cos(cos(bt)) \\
+    \end{array}
+    \right.$$
+
+### Family 4
+
+$$ \left\{
+    \begin{array}{rcl}
+    x(t) & = & cos(at) cos(bt) \\
+    \\
+    y(t) & = & sin(cos(at)) \\
+    \end{array}
+    \right.$$
+
+### Family 5
+
+$$ \left\{
+    \begin{array}{rcl}
+    x(t) & = & sin(at) [e^{cos(at)} - 2 cos(bt)] \\
+    \\
+    y(t) & = & cos(at) [e^{cos(at)} - 2 cos(bt)] \\
+    \end{array}
+    \right.$$
+
+### Family 6
+
+$$ \left\{
+    \begin{array}{rcl}
+    x(t) & = & (a - b) cos(bt) + cos(at - bt) \\
+    \\
+    y(t) & = & (a - b) sin(bt) - sin(at - bt) \\
+    \end{array}
+    \right.$$
+
+
