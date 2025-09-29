@@ -1,5 +1,5 @@
 # Project 1 - 2D Parametric Curves
-Draft version 0.9
+Draft version 0.91
 
 [![IMAGE ALT TEXT'](./assets/image-01.png)](https://youtu.be/K_npEJzaMM4)
 
@@ -14,7 +14,7 @@ $$ \mathbf{C}(t) = \left\{
         \end{array}
         \right.$$
 
-A curve can be drawn by sampling the domain for $t$ using a sequence of equidistant values $t_{0}, t_0+\delta, t0+2\delta, ... , t_1$, evaluating then to generate the sequence of points $\mathbf{C}(t_{0}), \mathbf{C}(t_0+\delta), \mathbf{C}(t0+2\delta), ... , \mathbf{C}(t_1)$ and connecting them, using straight line segments. The number of these sample points should be controlled by the user.
+A curve can be drawn by sampling the domain for $t$ using a sequence of equidistant values $t_{0}, t_0+\delta, t0+2\delta, ... , t_1$, evaluating then to generate the sequence of points $\mathbf{C}(t_{0}), \mathbf{C}(t_0+\delta), \mathbf{C}(t0+2\delta), ... , \mathbf{C}(t_1)$ and connecting them, using straight line segments. The number of these sample points should be controlled by the user. Your application should start with 60.000 (maximum allowed) sample points and allow this number to be adjusted in steps of 500 points using keys **'+'** and **'-'**
 
 Here is a very well known 2D parametric curve, representing a circumference of radius r, for $t \in [0, 2\pi]$:
 
@@ -25,7 +25,7 @@ $$ \left\{
     \end{array}
     \right.$$
 
-A family of curves is obtained by adding additional parameters to the curve definition. A particular curve will be obtained by fixing those extra parameter values and leaving only $t$ as a variable. The circumference example before was already a family of curves: All the circumferences centered at the origin. Replacing r with a specific value will result in a particular individual of that family. 
+A family of curves is obtained by adding additional parameters to the curve definition. A particular curve will be obtained by fixing those extra parameter values and leaving only $t$ as a variable. The circumference example before was already a family of curves: All the circumferences centered at the origin. Replacing $r$ with a specific value will result in a particular individual of that family. 
 
 The following is another example of a family of curves:
 
@@ -51,15 +51,15 @@ $$ \left\{
 
 Build an application that draws a 2D parametric curve. The user can choose the family by pressing the keys **'1'** to **'6'**. At that point, a member of that family should be displayed. Each family may have a different number of coefficients and the manipulation of their individual values should be posssible, afecting the curve display immediately.
 
-At any time there should be the possibility to revert the curve parameters to their original parameter values before user manipulation.
+At any time there should be the possibility to revert the curve parameters to their original parameter values before user manipulation, using the **'R'** key.
 
-The user should also be able to zoom in and out using the scroll wheel and move the curve around by clicking and dragging the mouse. The curve should move coherently with the mouse movement.
+The user should also be able to zoom in and out using the **scroll wheel** and move the curve around by clicking and dragging the mouse. The curve should move coherently with the mouse movement.
 
 Pressing the **SPACE** key should automatically toggle the animationof  the values of the curve's family parameters. The animation should just change one single parameter and the user can select the parameter to be manipulated, one at a time, by pressing the arrow keys (**LEFT** and **RIGHT**). Pressing the **UP** and **DOWN** keys will stop the animation and increment or decrement the parameter selected.
 
 The lower limit $t_0$ for the $t$ parameter can be fixed at 0, but the user may increase the value of $t_1$ - the upper limit - by pressing **PG UP** and **PG DOWN**.
 
-Curves can be drawn in two different ways. Either by drawing line segments connecting the curve points or by simply drawing those points with a size of 5.0 pixels. The 'P' key will toggle between these two display modes.
+Curves can be drawn in two different ways. Either by drawing line segments connecting the curve points or by simply drawing those points with a size of 5.0 pixels. The **'P'** key will toggle between these two display modes.
 
 Please note that the user can resize the application window at its own will and the display area (canvas) should occupy the full area of the browser's window.
 
