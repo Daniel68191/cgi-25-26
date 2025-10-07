@@ -1,5 +1,5 @@
 # Project 1 - 2D Parametric Curves
-Draft version 0.92
+Final Version 1.0 (Oct 7, 2025)
 
 [![IMAGE ALT TEXT'](./assets/image-01.png)](https://youtu.be/K_npEJzaMM4)
 
