@@ -63,6 +63,10 @@ Curves can be drawn in two different ways. Either by drawing line segments conne
 
 Please note that the user can resize the application window at its own will and the display area (canvas) should occupy the full area of the browser's window.
 
+## Evaluation
+
+A project that fulfills all the requirements can easily achieve 18 out of 20 points. You are free to add your own features. Surprise us!
+
 ## Tecnhical Details
 
 The curve points should be evaluated inside a vertex shader. The mandatory attributes (input) of a vertex are simply a sequence number for the sample point. A maximum of 60000 points can be used to display the curve.
