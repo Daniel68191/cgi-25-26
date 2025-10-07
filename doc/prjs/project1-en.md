@@ -133,4 +133,12 @@ $$ \left\{
     \end{array}
     \right.$$
 
-
+### Default parameters for families (reset operation)
+|Family|a|b|c|$t_0$|$t_1$|
+|------|-|-|-|-|-|
+| 1    |1|1|0|0|$2\pi$|
+| 2    |1|17.0|-|0|$2\pi$|
+| 3    |1|8.6|-|0|$10\pi$
+| 4    |7.6|5.1|-|0|10|
+| 5    |1|4|-|0|10|
+| 6    |4|1|-|0|$2\pi$|
