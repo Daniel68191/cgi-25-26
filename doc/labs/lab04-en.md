@@ -15,9 +15,10 @@ Read the application code [app.js](../../src/labs/ex12-step0/app.js) and identif
 The right side of the interface is organized as follows:
 
 - Top: a list containing the name of each of the objects that make up the scene displayed on the left side of the window
-- A section where you can add new primitive objects or delete an object from the scene
+- A section with buttons where you can add new primitive objects or delete an object from the scene
 - A section showing the properties of the selected (active) object
 
+![interface](./assets/primitive_instancing_0.png)
 ## ex12 - Adding objects to the scene
 
 Modify the given application so that we can add a cube or a sphere to the list of objects in the scene by pressing the appropriate button. The name of the object to be added to the list can be generated automatically, but it should be unique for each instance. Refer to the documentation for HTMLSelectElement objects, paying particular attention to the add() method.

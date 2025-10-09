@@ -15,8 +15,10 @@ Leia o código da aplicação [app.js](../../src/labs/ex12-step0/app.js) e ident
 O lado direito da interface está organizado da seguinte forma:
 
 - Topo: uma lista que conterá o nome de cada um dos objetos que constituem a cena visualizada no lado esquerdo da janela
-- Uma secção onde se podem acrescentar novos objetos primitivos ou apagar um objeto da cena
+- Uma secção, com botões, onde se podem acrescentar novos objetos primitivos ou apagar um objeto da cena
 - Uma secção onde se mostram as propriedades do objeto selecionado (activo)
+
+![interface](./assets/primitive_instancing_0.png)
 
 ## ex12 - Adicionar objectos à cena
 
