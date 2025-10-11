@@ -1,5 +1,5 @@
 import { loadShadersFromURLS, setupWebGL, buildProgramFromSources } from '../../libs/utils.js';
-import { mat4, vec3, flatten, lookAt, ortho, mult } from '../../libs/MV.js';
+import { mat4, vec3, flatten, lookAt, ortho, mult, translate, scalem, rotateX, rotateY, rotateZ} from '../../libs/MV.js';
 
 import * as SPHERE from '../../libs/objects/sphere.js';
 import * as CUBE from '../../libs/objects/cube.js';
@@ -16,6 +16,12 @@ let mProjection;
 const edge = 2.0;
 
 let instances = [];
+let activeInstance = null;
+
+function computeModelMatrix([px, py, pz, sx, sy, sz, rx, ry, rz]) {
+    var rotateM = mult(rotateX(rx), mult(rotateY(ry), rotateZ(rz)));
+    return mult(mult(translate(px,py,pz), rotateM), scalem(sx, sy, sz));
+}
 
 
 
@@ -27,9 +33,14 @@ function render(time) {
     gl.useProgram(program);
 
     const u_ctm = gl.getUniformLocation(program, "u_ctm");
-    gl.uniformMatrix4fv(u_ctm, false, flatten(mult(mProjection, mult(mView, mat4()))));
 
-    CUBE.draw(gl, program, gl.LINES);
+    instances.forEach(function(instance){
+        console.log(instance[0]);
+        const mModel = computeModelMatrix(instance[1]);
+        gl.uniformMatrix4fv(u_ctm, false, flatten(mult(mProjection, mult(mView, mModel))));
+        instance[0].draw(gl, program, gl.LINES);
+    })
+
 }
 
 
@@ -71,6 +82,39 @@ function setup(shaders) {
 
         gl.viewport(0, 0, canvas.width, canvas.height);
     });
+
+    const instance_list = document.getElementById("object_instances")
+    const inputIds = ["px","py","pz","sx","sy","sz","rx","ry","rz"];
+    const transformInputs = inputIds.map(id => document.getElementById(id));
+
+    transformInputs.forEach((input, index) => {
+        input.addEventListener("input", () => {
+            if (activeInstance < 0) return;
+            instances[activeInstance][1][index] = parseFloat(input.value);
+        });
+    });
+
+    instance_list.addEventListener("change", function(){
+        activeInstance = instance_list.selectedIndex;
+        transformInputs.forEach((input, index) => {
+            input.value = instances[activeInstance][1][index];
+        });
+    })
+
+    document.getElementById("add_cube").onclick = function(){
+        instances.push([CUBE, [0,0.05,0,1,1,1,1,0,0]]);
+        instance_list.add(new Option("Cube"));
+    }
+
+    document.getElementById("add_sphere").onclick = function(){
+        instances.push([SPHERE, [0,0.05,0,1,1,1,1,0,0]]);
+        instance_list.add(new Option("Sphere"));
+    }
+    
+    document.getElementById("remove_button").onclick = function(){
+        instances.splice(activeInstance, 1);
+        instance_list.remove(activeInstance);
+    }
 
 
     window.requestAnimationFrame(render);
