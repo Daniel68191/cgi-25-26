@@ -10,13 +10,7 @@ var program;
 /** @type {WebGLVertexArrayObject} */
 var vao;
 
-var connector;
-var pos;
-
-var velocityX = Math.random() * 2 - 1;
-var velocityY = Math.random() * 2 - 1;
-var positionX = 0;
-var positionY = 0;
+const NUM = 100;
 
 function setup(shaders) {
     // Setup
@@ -34,21 +28,24 @@ function setup(shaders) {
     vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
 
-    const vertices= [
-        -0.25, -0.25, 1.0, .0, .0, 1.0,
-         0.25, -0.25, .0, 1.0, .0, 1.0,
-        -0.25,0.25, .0, .0, 1.0, 1.0,
-        0.25, 0.25, 1.0, 1.0, .0, 1.0
-    ]
+    const vertices = [];
+
+    for (var i = 0; i < NUM; i++) {
+        var angle = i * Math.PI / 20;
+        vertices.push([0.8 * Math.cos(angle), 0.8 * Math.sin(angle), 2*Math.random()-1, 2*Math.random()-1, Math.random() + 0.25, Math.random() + 0.25, Math.random() + 0.25, 1.0]);
+    }
 
     const aBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, aBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, flatten(vertices), gl.STATIC_DRAW);
-    const a_position = gl.getAttribLocation(program, "a_position");
-    gl.vertexAttribPointer(a_position, 2, gl.FLOAT, false, 6*4, 0);
-    gl.enableVertexAttribArray(a_position);
+    const first_position = gl.getAttribLocation(program, "first_position");
+    gl.vertexAttribPointer(first_position, 2, gl.FLOAT, false, 8*4, 0);
+    gl.enableVertexAttribArray(first_position);
+    const last_position = gl.getAttribLocation(program, "last_position");
+    gl.vertexAttribPointer(last_position, 2, gl.FLOAT, false, 8*4, 2*4);
+    gl.enableVertexAttribArray(last_position);
     const a_color = gl.getAttribLocation(program, "a_color");
-    gl.vertexAttribPointer(a_color, 4, gl.FLOAT, false, 6*4, 2*4);
+    gl.vertexAttribPointer(a_color, 4, gl.FLOAT, false, 8*4, 4*4);
     gl.enableVertexAttribArray(a_color);
 
     // By now the vertex array has all the information to be used later
@@ -61,38 +58,29 @@ function setup(shaders) {
     // Setup the background color
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
-    pos = gl.getUniformLocation(program, "pos");
-
     // Call animate for the first time
     window.requestAnimationFrame(animate);
 }
 
-function animate() {
+function animate(time) {
     // Trigger another call for the next frame update
     window.requestAnimationFrame(animate)
 
-    if (positionX >= 0.75 || positionX <= -0.75) velocityX = -velocityX;
-    if (positionY >= 0.75 || positionY <= -0.75) velocityY = -velocityY;
-    
-    positionX += velocityX * 0.0065;
-    positionY += velocityY * 0.0065;
-
     // Drawing code
-
     // Clear the framebuffer with the background color
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     // Use the WebGL program created before
     gl.useProgram(program);
 
+    const u_time = gl.getUniformLocation(program, "u_time");
+    gl.uniform1f(u_time, Math.abs(Math.sin(0.0005*time)));
     // Make the vertex array object active (records how to fetch vertex data
     // from buffer)
     gl.bindVertexArray(vao);
 
-    gl.uniform4f(pos, positionX, positionY, 0.0, 0.0);
-
     // Draw triangles using 3 vertices (one triangle)
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    gl.drawArrays(gl.LINE_LOOP, 0, 40);
 
     // Deactivate the vertex array object since drawing is complete
     gl.bindVertexArray(null);
