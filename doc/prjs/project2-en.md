@@ -1,34 +1,42 @@
 # Project 2 - 3D Hierarchical Modelling and Projections
+Version Draft 0.9
+
+## Change log:
+
+- 27/10/2025 18h30, Draft 0.9 version published.
 
 ## Objective
 
-Develop a WebGL application that allow the manipulation of a combat tank to be used to fire tomatoes. This tank is a top secret project for the next [Tomatina](https://en.wikipedia.org/wiki/La_Tomatina) event.
+Develop a WebGL application that allow the manipulation of a tank to be used to fire tomatoes. This tank is a top secret project for the next [Tomatina](https://en.wikipedia.org/wiki/La_Tomatina) event.
 
 The tank should be similar to the one depicted in the following figures.
 
-| Heading 1 | Heading 2 |
+|  |  |
 |-----------|-----------|
 | ![Front View](assets/front_view.png) | ![Left Side](assets/left_view.png)|
-| Front | Left |
+| Front View| Left View|
 | ![Top View](assets/top_view.png) | ![Oblique View](assets/oblique_view.png)|
-| Top | Oblique |
+| Top View| Oblique View|
 
 The control of the application should mostly be performed via the keyboard. The following figures shows the controls required:
 
-![Keyboard controls](assets/kbd_controls.png)
+<img src="assets/kbd_controls.png" width="30%" />
 
 These controls are divided into the following groups:
 
 - Controlling the tank model ('q', 'w', 'e', 'a', 's', 'd')
-- Choosing the projection for single view ('1', '2', '3', '4', '5')
-- Choosing between single view of multiple views ('0')
-- Toggle between axonometric and oblique projections in the fourth quadrant ('9')
+- Choosing the projection for single view ('1', '2', '3', '4')
+- Toggle between single view of multiple views ('0')
+- Toggle between axonometric and oblique projections in the fourth quadrant ('8')
+- Toggle between parallel and perspective view volumes ('9')
 - Controlling the Oblique or Axonometric parameters ('Up', 'Down', 'Left', 'Right' cursor keys)
 - Switching between wireframe and solid drawing (' ') and reset porjection paramaters ('r').
+- Reseting the zoom level and the fourth view parameters ('r')
 
 The image below shows the output of the application in multiple views mode, by using the European method of layout.
 
-![Multiple views](multiple_viewss.png)
+![Multiple views](assets/multiple_views.png)
+
 
 Additionally the user should be able to zoom in and zoom out in all the views using the mouse wheel, while keeping the views centered on the same point. The tank should be completely visible.
 
@@ -42,16 +50,17 @@ The tank model should display a hierarchy of elements that aggregate its differe
 - The tank must consist of a cabin and a base.
 - The tank base should have 12 wheels, which can turn depending on the movement applied to the
 tank (commands ‘q’ and ‘e’)
-- In total, the car should have a minimum of 10 primitives. The example shown contains many more...
+- In total, the tank should have a minimum of 10 primitives. The example shown contains many more...
 
-There are three options for implementing the car design (this does not apply to the floor design)
+There are two options for implementing the tank design (this does not apply to the floor design):
 
 1. After drawing/building the scene graph on paper, generate the corresponding code, as done in the labs and in the examples from the lectures.
-2. After drawing/constructing the graph on paper, create a JavaScript object, in a tree like structure, that represents that same graph and implement a function capable of scanning it and drawing the primitives.
+2. After drawing/constructing the graph on paper, create a JavaScript object, in a tree like structure, that represents that same graph and implement a function capable of scanning it and drawing the primitives. You can also load a JSON file and use it to create your tree like structure for the scene. It is also advisable to allow the existence of sub-graphs when loading data from a JSON file.
 
 For option 2, the following types of nodes should be considered:
-a) internal branch/node with transformations and descendants
-b) terminal branch/node with transformations and a primitive
+a) internal branch/node with transformations and descendants.
+b) terminal branch/node with transformations and a primitive.
+
 
 The organization of the transformations in a node will need adhere to the following convention:
 
