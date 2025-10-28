@@ -1,80 +1,151 @@
-# Project 2 - 3D Hierarchical Modelling and Projections
-Version Draft 0.9
+# Project 2 — 3D Hierarchical Modelling & Projections
+**Version Draft 0.92 — Student-Friendly Edition**
 
-## Change log:
-
+## Change Log
+- 28/10/2025 — Draft 0.92 published (student-friendly + checklist)
+- 28/10/2025 1h00, version 0.91 published.
 - 27/10/2025 18h30, Draft 0.9 version published.
+---
 
 ## Objective
 
-Develop a WebGL application that allow the manipulation of a tank to be used to fire tomatoes. This tank is a top secret project for the next [Tomatina](https://en.wikipedia.org/wiki/La_Tomatina) event.
+You will create a WebGL application where you control a tomato-launching tank 🚜🍅  
+The tank uses **hierarchical modelling** and must display **multiple projection types**.
 
-The tank should be similar to the one depicted in the following figures.
+The tank should resemble the one in the figures:
 
 |  |  |
 |-----------|-----------|
 | ![Front View](assets/front_view.png) | ![Left Side](assets/left_view.png)|
-| Front View| Left View|
+| *Front View* | *Left View* |
 | ![Top View](assets/top_view.png) | ![Oblique View](assets/oblique_view.png)|
-| Top View| Oblique View|
+| *Top View* | *Oblique View* |
 
-The control of the application should mostly be performed via the keyboard. The following figures shows the controls required:
+---
+
+## Controls
+
+Most actions use the keyboard.
 
 <img src="assets/kbd_controls.png" width="30%" />
 
-These controls are divided into the following groups:
+| Feature | Keys |
+|--------|-----|
+| Move tank parts | `q`, `w`, `e`, `a`, `s`, `d` |
+| Shoot a tomatoe | `z` |
+| Select camera for single view | `1`, `2`, `3`, `4` |
+| Toggle single ⇆ multiple views | `0` |
+| Toggle axonometric ⇆ oblique (view 4) | `8` |
+| Toggle parallel ⇆ perspective | `9` |
+| Adjust axonometric/oblique parameters | Arrow keys |
+| Wireframe ⇆ Solid | Space |
+| Reset projection + zoom | `r` |
 
-- Controlling the tank model ('q', 'w', 'e', 'a', 's', 'd')
-- Choosing the projection for single view ('1', '2', '3', '4')
-- Toggle between single view of multiple views ('0')
-- Toggle between axonometric and oblique projections in the fourth quadrant ('8')
-- Toggle between parallel and perspective view volumes ('9')
-- Controlling the Oblique or Axonometric parameters ('Up', 'Down', 'Left', 'Right' cursor keys)
-- Switching between wireframe and solid drawing (' ') and reset porjection paramaters ('r').
-- Reseting the zoom level and the fourth view parameters ('r')
+**Requirements**
+- No distortion when resizing the window
+- Mouse wheel zoom in all views
+- Tank must remain fully visible and centred
 
-The image below shows the output of the application in multiple views mode, by using the European method of layout.
+Add a ground plane at *y = 0* using a chequered pattern of cube primitives.
 
-![Multiple views](assets/multiple_views.png)
+---
 
+## Tank Modelling Requirements
 
-Additionally the user should be able to zoom in and zoom out in all the views using the mouse wheel, while keeping the views centered on the same point. The tank should be completely visible.
+Your tank design is free, but must include at least:
 
-Apart from the tank, a ground plane should be drawn with its top surface at y=0, by using a tiled chequered pattern of cube primitives.
+| Part | Behaviour |
+|------|-----------|
+| Cabin | Rotates left/right (`a`, `d`) |
+| Cannon | Rotates up/down (`w`, `s`) |
+| Base | Holds 12 wheels |
+| Wheels | Rotate when tank moves (`q`, `e`) |
+| Primitive count | ≥ 18 primitives |
 
-## Tank model
+Apply **realistic movement limits** (e.g., cannon should not rotate 360°).
 
-The tank model should display a hierarchy of elements that aggregate its different parts. The tank is of free design and dimensions, although it must contain the following elements:
-- A cabin that can be rotated in both directions (commands 'a' and 's')
-- A cannon, attached to the cabin that can be rotated up and down (commands 'w' and 's')
-- The tank must consist of a cabin and a base.
-- The tank base should have 12 wheels, which can turn depending on the movement applied to the
-tank (commands ‘q’ and ‘e’)
-- In total, the tank should have a minimum of 10 primitives. The example shown contains many more...
+---
 
-There are two options for implementing the tank design (this does not apply to the floor design):
+## Hierarchy / Scene Graph
 
-1. After drawing/building the scene graph on paper, generate the corresponding code, as done in the labs and in the examples from the lectures.
-2. After drawing/constructing the graph on paper, create a JavaScript object, in a tree like structure, that represents that same graph and implement a function capable of scanning it and drawing the primitives. You can also load a JSON file and use it to create your tree like structure for the scene. It is also advisable to allow the existence of sub-graphs when loading data from a JSON file.
+Build a **scene graph** to organise tank parts:
 
-For option 2, the following types of nodes should be considered:
-a) internal branch/node with transformations and descendants.
-b) terminal branch/node with transformations and a primitive.
+You may:
 
+1️⃣ Hard-code the graph while drawing the scene  
+**or**  
+2️⃣ Represent the graph using a **JavaScript object** or **JSON**, then traverse it to render
 
-The organization of the transformations in a node will need adhere to the following convention:
+### Node Types
+- **Internal node:** transformations + child nodes
+- **Leaf node:** transformations + a geometric primitive
 
-- Each node always stores a scale, 3 rotations around the principal axis and a translation.
-- The local node transformations are applied by using the following order (for a generic point P multiplied on the right): T . Rz . Ry . Rx . S . P
+### Each node must store:
+- Scale  
+- Rotation around X, Y, Z  
+- Translation  
 
-The graph must have a branch/node of type a) at its root. In this option, you should consider the possibility that the branches/nodes have a name, thus enabling the writing of a function that, given the name of the branch/node, returns the reference to the respective object. Thus, it will be possible to easily implement event handlers that will change the parameters of the graph transformations.
+Transform order (applied to a point **P**, multiplied on the right):
 
-The floor plan can be drawn without a memory representation of the respective graph, by writing the code directly, as was done in the exercises from the labs. Alternatively you can write functions that add nodes to your graph and dynamically insert the floor plan nodes.
+> **T · Rz · Ry · Rx · S**
 
-## Technical information
+The **root** must be an internal node.
 
-## Evaluation
+Nodes should be **named** so their transforms can be modified by keyboard events.
 
+The ground plane may be rendered directly or inserted into the graph dynamically.
 
+---
 
+## Evaluation — 20 points
 
+| Feature | Points |
+|---------|-------|
+| Tank modelling (all parts + correct motion) | 9 |
+| Views & projection controls | 6 |
+| Scene graph (.js or .json) | 2 |
+| Tomato ammunition | 1 |
+| Creative extras (game mode, more tanks, etc.) | 2 |
+
+Make it fun if you want! 🍅
+
+---
+
+## ✅ Visual Checklist (for students)
+
+### Tank Modelling
+- [ ] Cabin rotates (`a`, `d`)
+- [ ] Cannon rotates (`w`, `s`)
+- [ ] Minimum 12 wheels
+- [ ] Wheels rotate when tank moves (`q`, `e`)
+- [ ] Minimum 10 primitives used
+- [ ] Realistic movement limits applied
+
+### Views & Projections
+- [ ] Single/multiple views toggle (`0`)
+- [ ] Four camera presets (`1–4`)
+- [ ] View 4: axonometric/oblique toggle (`8`)
+- [ ] Parallel/perspective toggle (`9`)
+- [ ] Parameters adjusted via arrow keys
+- [ ] Zoom with mouse wheel (centred view)
+- [ ] No distortion on window resize
+
+### Scene Graph
+- [ ] Internal + leaf nodes implemented
+- [ ] Correct transform order
+- [ ] Named nodes for control
+- [ ] Graph defined in JS or JSON
+
+### Ground + Extras
+- [ ] Chequered ground plane at y = 0
+- [ ] Tomatoes can be fired
+- [ ] Creative add-ons (optional)
+
+---
+
+## Technical Notes
+Provided later (WebGL template, helper functions, etc.)
+
+---
+
+*🚀 Good luck — the world is counting on your tomato tank innovation.*
