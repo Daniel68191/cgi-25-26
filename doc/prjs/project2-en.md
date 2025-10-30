@@ -1,8 +1,9 @@
 # Project 2 — 3D Hierarchical Modelling & Projections
-**Version Draft 0.93 — Student-Friendly Edition**
+**Version Draft 0.94 — Student-Friendly Edition**
 
 ## Change Log
-- 28/10/2025 23h00, Draft 0.93 published (student-friendly + checklist)
+- 30/10/2025 23h00, Draft 0.94 published (typos)
+- 28/10/2025 23h00, Draft 0.93 published (techincal details)
 - 28/10/2025 01h03, Draft 0.92 published (student-friendly + checklist)
 - 28/10/2025 01h00, version 0.91 published.
 - 27/10/2025 18h30, Draft 0.9 version published.
@@ -119,7 +120,7 @@ Make it fun if you want! 🍅
 - [ ] Cannon rotates (`w`, `s`)
 - [ ] Minimum 12 wheels
 - [ ] Wheels rotate when tank moves (`q`, `e`)
-- [ ] Minimum 10 primitives used
+- [ ] Minimum 18 primitives used
 - [ ] Realistic movement limits applied
 
 ### Views & Projections
@@ -145,9 +146,8 @@ Make it fun if you want! 🍅
 ---
 
 ## Technical Notes
-Provided later (WebGL template, helper functions, etc.)
 
-**Important**: No javascript library that is not in the public repository can be used!
+**Important**: You cannot use external javascript libraries that are not in the shared repository!
 
 ### Multiple views
 
@@ -214,7 +214,7 @@ You can declare your scene as a hierarchy of javascript objects or by its JSON e
 
 ### Drawing the ground
 
-If you hard code your scene graph, write a function that accepts the number of tiles along each direction and the tile dimensions and have that function called from within your render loop.
+If you hard-code your scene graph, write a function that accepts the number of tiles along each direction and the tile dimensions and have that function called from within your render loop.
 
 If you use a javascript object write a function that can insert a node as a child of some other node.
 
